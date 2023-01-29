@@ -55,6 +55,7 @@ app.post("/login", async (req, res) => {
           req.body.password,
           data[0].password,
            (err, result)=> {
+            
             if (err) {
               res.status(500).send({ msg: "Something went wrong !" });
             } else if (result) {
@@ -67,6 +68,9 @@ app.post("/login", async (req, res) => {
                     .send({ msg: "User login Successfully", token: token,displayName:data[0].name,administration: data[0].administration});
                 }
               );
+            }
+            else{
+                res.status(200).send({msg:"Wrong password"})
             }
           }
         );
