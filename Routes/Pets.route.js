@@ -1,5 +1,5 @@
 const express=require("express");
-const { foodModel } = require("../Models/food.model");
+const { foodModel } = require("../Models/Food.model");
 const { petModel } = require("../Models/Pet.model");
 const { careModel } = require("../Models/Care.model");
 
