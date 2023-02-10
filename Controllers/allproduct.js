@@ -1,4 +1,4 @@
-const {petdataModel}=require("../Models/pet.model")
+const {petdataModel}=require("../Models/Pet.model")
 const {careModel}=require("../Models/Care.model")
 const {foodModel}=require("../Models/Food.model")
 
