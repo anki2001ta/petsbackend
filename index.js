@@ -20,21 +20,10 @@ app.use(
 )
 app.use("/user",user)
 app.use("/pets",petRoute)
-app.use(auth)
 
 
 
-// app.get("/",async(req,res)=>{
-//   try{
-//     await petModel.find();
-//     await foodModel.find()
-//     await careModel.find()
-//     res.send("Its main page")
-//   }
-//   catch(er){
-// console.log({msg:er})
-//   } 
-// });
+
 
 
 
@@ -108,8 +97,8 @@ app.post("/login", async (req, res) => {
   });
   
 
-
-
+  
+  app.use(auth)
 
 
 //connect database
