@@ -5,16 +5,20 @@ const {foodModel}=require("../Models/Food.model")
 
 //default url for pets collection
 exports.petsdata=async(req,res)=>{
-  const pets_data= await petdataModel.find( {category:"birds"}).limit(5).skip((1-1)*5)
+ let id= req.params.id
+ try {
+   let petData=await petdataModel.findById(id)
+   res.status(200).json({
+      sucess:true,
+     petData,
+      // care_data,
+      // food_data
+   })
 
-//   const care_data= await careModel.find()
-//   const food_data= await foodModel.find()
-  res.status(200).json({
-   sucess:true,
-   pets_data,
-   // care_data,
-   // food_data
-})
+ } catch (error) {
+   console.log(error)
+ }
+
 };
 
 //function to create pet data
