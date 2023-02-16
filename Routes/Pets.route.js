@@ -3,7 +3,7 @@ const { petsdata,pets,careCreate,foodCreate,careget,foodget} = require("../Contr
 
 const petRoute=express.Router()
 petRoute.use(express.json())
-petRoute.route("/:id").get(petsdata)
+petRoute.route("/single/:id").get(petsdata)
 petRoute.route("/:category").get(pets)
 petRoute.route("/care").post(careCreate)
 petRoute.route("/food").post(foodCreate)
