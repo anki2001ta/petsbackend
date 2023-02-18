@@ -1,5 +1,5 @@
 const express=require("express");
-const { petsdata,pets,careCreate,foodCreate,careget,foodget} = require("../Controllers/allproduct");
+const { petsdata,pets,careCreate,foodCreate,careget,foodget,caresingledata,foodsingledata} = require("../Controllers/allproduct");
 
 const petRoute=express.Router()
 petRoute.use(express.json())
@@ -10,5 +10,7 @@ petRoute.route("/food").post(foodCreate)
 petRoute.route("/care/groom").get(careget)
 petRoute.route("/food").get(foodCreate)
 petRoute.route("/food/feed").get(foodget)
+petRoute.route("/caresingle/:id").get(caresingledata)
+petRoute.route("/foodsingle/:id").get(foodsingledata)
 
 module.exports=petRoute

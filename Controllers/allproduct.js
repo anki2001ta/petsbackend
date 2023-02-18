@@ -10,9 +10,8 @@ exports.petsdata=async(req,res)=>{
    let petData=await petdataModel.findById(id)
    res.status(200).json({
       sucess:true,
-     petData,
-      // care_data,
-      // food_data
+      data: petData,
+      
    })
 
  } catch (error) {
@@ -20,6 +19,41 @@ exports.petsdata=async(req,res)=>{
  }
 
 };
+
+exports.foodsingledata=async(req,res)=>{
+   let id= req.params.id
+   try {
+     let foodsingData=await foodModel.findById(id)
+     res.status(200).json({
+        sucess:true,
+
+        data:foodsingData,
+        
+     })
+  
+   } catch (error) {
+     console.log(error)
+   }
+  
+  };
+
+
+  exports.caresingledata=async(req,res)=>{
+   let id= req.params.id
+   console.log(id)
+   try {
+     let caresingData=await careModel.findById(id)
+     res.status(200).json({
+        sucess:true,
+        data: caresingData,
+        
+     })
+  
+   } catch (error) {
+     console.log(error)
+   }
+  
+  };
 
 //function to create pet data
 //all pets route
@@ -69,7 +103,7 @@ catch(er){
 //care get route
 exports.careget=async(req,res)=>{
    try{
-      let {price,sortBy,rating,used,limit=16,page=1}=req.query;
+      let {price,sortBy,rating,used}=req.query;
       let temp={};
       if(price!==undefined){
          temp.price=price
@@ -83,7 +117,7 @@ exports.careget=async(req,res)=>{
       let caredata;
       let sorts={};
       if(sortBy==undefined){
-         caredata=await careModel.find(temp).limit(limit).skip((page-1)*limit)
+         caredata=await careModel.find(temp)
       }
       else{
          if(sortBy=="asc"){
@@ -92,7 +126,7 @@ exports.careget=async(req,res)=>{
          else if(sortBy=="desc"){
             sorts.Price=-1
          }
-         caredata= await careModel.find(temp).sort(sorts).limit(limit).skip((page-1)*limit)
+         caredata= await careModel.find(temp).sort(sorts)
       }
        
       res.status(200).json({
@@ -113,7 +147,7 @@ exports.careget=async(req,res)=>{
 //food get
 exports.foodget=async(req,res)=>{
    try{
-      let {price,sortBy,rating,used,limit=16,page=1}=req.query;
+      let {price,sortBy,rating,used}=req.query;
       let temp={};
       if(price!==undefined){
          temp.price=price
@@ -127,7 +161,7 @@ exports.foodget=async(req,res)=>{
       let food_data;
       let sorts={};
       if(sortBy==undefined){
-         food_data=await foodModel.find(temp).limit(limit).skip((page-1)*limit)
+         food_data=await foodModel.find(temp)
       }
       else{
          if(sortBy=="asc"){
@@ -137,7 +171,7 @@ exports.foodget=async(req,res)=>{
             sorts.Price=-1
          }
       
-       food_data= await foodModel.find(temp).sort(sorts).limit(limit).skip((page-1)*limit)
+       food_data= await foodModel.find(temp).sort(sorts)
       }
        res.status(200).json({
          sucess:true,
