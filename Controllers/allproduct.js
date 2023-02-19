@@ -143,6 +143,7 @@ exports.careget=async(req,res)=>{
 exports.searchpets=async(req,res)=>{
    try{
       const {petname}=req.query;
+      console.log(petname)
       let searchData=await petdataModel.find({name:{$regex:petname}});
       res.status(200).json({
          sucess:true,
