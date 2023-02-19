@@ -144,6 +144,12 @@ exports.searchpets=async(req,res)=>{
    try{
       const {petname}=req.query;
       console.log(petname)
+      if(petname=="" || petname==undefined){
+         res.status(200).json({
+            sucess:true,
+            searchData:[]
+         });
+      }
       let searchData=await petdataModel.find({name:{$regex:petname}});
       res.status(200).json({
          sucess:true,
