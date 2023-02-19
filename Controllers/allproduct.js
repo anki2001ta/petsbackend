@@ -1,4 +1,4 @@
-const petdataModel=require("../Models/Pet.model")
+const {petdataModel}=require("../Models/Pet.model")
 const {careModel}=require("../Models/Care.model")
 const {foodModel}=require("../Models/Food.model")
 
@@ -140,7 +140,19 @@ exports.careget=async(req,res)=>{
    
   };
 
-
+exports.searchpets=async(req,res)=>{
+   try{
+      const {petname}=req.query;
+      let searchData=await petdataModel.find({name:{$regex:petname}});
+      res.status(200).json({
+         sucess:true,
+         searchData
+      });
+   }
+   catch(er){
+      console.log(er)
+   }
+}
 
 
 
