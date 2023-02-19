@@ -33,4 +33,4 @@ const petdataSchema=mongoose.Schema({
 });
 
 const petdataModel=mongoose.model("petcollection",petdataSchema)
-module.exports=petdataModel
+module.exports={petdataModel}
