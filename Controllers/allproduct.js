@@ -1,7 +1,7 @@
 const {petdataModel}=require("../Models/Pet.model")
 const {careModel}=require("../Models/Care.model")
 const {foodModel}=require("../Models/Food.model")
-
+const {cartModel}=require("../Models/Cart.model")
 
 //default url for pets collection
 exports.petsdata=async(req,res)=>{
@@ -220,5 +220,13 @@ exports.foodCreate=async(req,res)=>{
    res.send(req.body).json({
       sucess:true,
       foodbase
+   });
+  };
+//cart route
+exports.cartCreate=async(req,res)=>{
+   const cartbase= await cartModel.create(req.body)
+   res.send(req.body).json({
+      sucess:true,
+      cartbase
    });
   };

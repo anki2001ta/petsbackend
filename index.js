@@ -8,7 +8,8 @@ const user=require("./Routes/User.route")
 const UserModel=require("./Models/User.model")
 const {auth}=require("./Middlewares/Auth.middleware")
 const cors=require("cors");
-const petRoute=require("./Routes/Pets.route")
+const petRoute=require("./Routes/Pets.route");
+const cartRoute = require("./Routes/Cart.route");
 const app=express()
 
 
@@ -99,7 +100,7 @@ app.post("/login", async (req, res) => {
 
   
   app.use(auth)
-
+  app.use("/cart",cartRoute);
 
 //connect database
 app.listen(process.env.port,async()=>{
