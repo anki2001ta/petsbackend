@@ -223,10 +223,12 @@ exports.foodCreate=async(req,res)=>{
    });
   };
 //cart route
-exports.cartCreate=async(req,res)=>{
-   const cartbase= await cartModel.create(req.body)
-   res.send(req.body).json({
-      sucess:true,
-      cartbase
-   });
-  };
+exports.cartCreate = async (req, res) => {
+   try {
+     delete req.body._id;
+     await cartModel.create(req.body);
+     res.send(req.body);
+   } catch (error) {
+     console.log(error);
+   }
+ };
