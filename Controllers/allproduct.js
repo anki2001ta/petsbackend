@@ -232,3 +232,12 @@ exports.cartCreate = async (req, res) => {
      console.log(error);
    }
  };
+ 
+ exports.cartGet = async (req, res) => {
+   try {
+     let userCart=await cartModel.find({userID:req.body.userID});
+     res.send(userCart);
+   } catch (error) {
+     console.log(error);
+   }
+ };
