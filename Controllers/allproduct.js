@@ -241,3 +241,13 @@ exports.cartCreate = async (req, res) => {
      console.log(error);
    }
  };
+
+ exports.delpets = async (req, res) => {
+      try {
+         let delid=req.params.id;
+        await cartModel.findByIdAndDelete(delid)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    }
