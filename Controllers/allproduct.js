@@ -242,12 +242,12 @@ exports.cartCreate = async (req, res) => {
    }
  };
 
- exports.delpets = async (req, res) => {
-      try {
-         let delid=req.params.id;
-        await cartModel.findByIdAndDelete(delid)
-        res.send("success");
-      } catch (error) {
-        console.log(error);
-      }
-    }
+ exports.delcart = async (req, res) => {
+   try {
+      let delid=req.params.id;
+     await cartModel.findByIdAndDelete(delid)
+     res.send("success");
+   } catch (error) {
+     console.log(error);
+   }
+ };
