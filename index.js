@@ -19,7 +19,7 @@ app.use(
         origin:"*"
     })
 )
-app.use("/user",user)
+
 app.use("/pets",petRoute)
 
 
@@ -101,7 +101,7 @@ app.post("/login", async (req, res) => {
   
   app.use(auth)
   app.use("/cart",cartRoute);
-
+  app.use("/user",user)
 //connect database
 app.listen(process.env.port,async()=>{
   try{
