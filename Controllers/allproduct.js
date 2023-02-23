@@ -251,3 +251,13 @@ exports.cartCreate = async (req, res) => {
      console.log(error);
    }
  };
+
+ exports.delcartById = async (req, res) => {
+      try {
+         let delid=req.body.userID;
+        await cartModel.deleteMany({userID:delid})
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
