@@ -7,7 +7,7 @@ const UserModel=require("../Models/User.model")
 // To get the user
 user.get("/", async (req,res)=>{
 try{
-  const users=await UserModel.find({userID:req.body.userID});
+  const users=await UserModel.find({_id:req.body.userID});
   res.status(200).send(users)
 }
 catch(err){
