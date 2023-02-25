@@ -287,3 +287,59 @@ exports.cartCreate = async (req, res) => {
         console.log(error);
       }
     };
+
+    exports.deletegroom = async (req, res) => {
+      try {
+         let id=req.params.id;
+        await careModel.findByIdAndDelete(id)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    exports.deletefood = async (req, res) => {
+      try {
+         let id=req.params.id;
+        await foodModel.findByIdAndDelete(id)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+      // update
+    exports.updatefood = async (req, res) => {
+      try {
+         let id=req.params.id;
+         let payload=req.body
+        await foodModel.findByIdAndUpdate(id,payload)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+    exports.updatepets = async (req, res) => {
+      try {
+         let id=req.params.id;
+         let payload=req.body
+        await petdataModel.findByIdAndUpdate(id,payload)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+    exports.updategroom = async (req, res) => {
+      try {
+         let id=req.params.id;
+         let payload=req.body
+        await careModel.findByIdAndUpdate(id,payload)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
