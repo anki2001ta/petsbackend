@@ -263,8 +263,9 @@ exports.cartCreate = async (req, res) => {
     };
 
     exports.allpets=async(req,res)=>{
+      let {page=1}=req.query;
       try {
-        let petData=await petdataModel.find()
+        let petData=await petdataModel.find().limit(10).skip((page-1)*10)
         res.status(200).json({
            sucess:true,
            data: petData,
