@@ -1,11 +1,12 @@
 const express=require("express");
 const { petsdata,pets,careCreate,foodCreate,careget,foodget,caresingledata,foodsingledata,searchpets,
-    allpets,deletepets,deletegroom,deletefood,updatefood,updatepets,updategroom} = require("../Controllers/allproduct");
+    allpets,deletepets,deletegroom,deletefood,updatefood,updatepets,updategroom,petsCreate} = require("../Controllers/allproduct");
 
 const petRoute=express.Router()
 petRoute.use(express.json())
 petRoute.route("/single/:id").get(petsdata)
 petRoute.route("/pets").get(allpets)
+petRoute.route("/petsCreate").post(petsCreate)
 petRoute.route("/petsdelete/:id").delete(deletepets)
 petRoute.route("/groomdelete/:id").delete(deletegroom)
 petRoute.route("/fooddelete/:id").delete(deletefood)

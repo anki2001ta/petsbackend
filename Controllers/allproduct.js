@@ -207,7 +207,7 @@ exports.foodget=async(req,res)=>{
 
 //care route
 exports.careCreate=async(req,res)=>{
-   const carebase= await careModel.insertMany(req.body)
+   const carebase= await careModel.create(req.body)
    res.send(req.body).json({
       sucess:true,
       carebase
@@ -216,12 +216,22 @@ exports.careCreate=async(req,res)=>{
 
 //food route
 exports.foodCreate=async(req,res)=>{
-   const foodbase=await foodModel.insertMany(req.body)
+   const foodbase=await foodModel.create(req.body)
    res.send(req.body).json({
       sucess:true,
       foodbase
    });
   };
+
+  exports.petsCreate=async(req,res)=>{
+   const foodbase=await petdataModel.create(req.body)
+   res.send(req.body).json({
+      sucess:true,
+      foodbase
+   });
+  };
+
+  
 //cart route
 exports.cartCreate = async (req, res) => {
    try {
