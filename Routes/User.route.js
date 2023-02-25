@@ -16,6 +16,17 @@ catch(err){
 }
 });
 
+user.get("/alluser", async (req,res)=>{
+  try{
+    const users=await UserModel.find();
+    res.status(200).send(users)
+  }
+  catch(err){
+   console.log(err)
+   res.status(400).send({msg:"user not found"});
+  }
+  });
+
 
 // Creating user
 user.post("/create", async (req,res)=>{
