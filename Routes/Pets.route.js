@@ -5,6 +5,7 @@ const petRoute=express.Router()
 petRoute.use(express.json())
 petRoute.route("/single/:id").get(petsdata)
 petRoute.route("/pets").get(allpets)
+petRoute.route("/petsdelete/:id").delete(deletepets)
 petRoute.route("/:category").get(pets)
 petRoute.route("/care").post(careCreate)
 petRoute.route("/food").post(foodCreate)
@@ -13,7 +14,7 @@ petRoute.route("/food").get(foodCreate)
 petRoute.route("/food/feed").get(foodget)
 petRoute.route("/caresingle/:id").get(caresingledata)
 petRoute.route("/foodsingle/:id").get(foodsingledata)
-petRoute.route("/petsdelete/:id").get(deletepets)
+
 petRoute.route("/pet/search").get(searchpets)
 
 module.exports=petRoute
