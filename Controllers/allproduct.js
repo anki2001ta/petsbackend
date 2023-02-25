@@ -277,3 +277,13 @@ exports.cartCreate = async (req, res) => {
       }
      
      };
+
+     exports.deletepets = async (req, res) => {
+      try {
+         let id=req.params.id;
+        await petdataModel.findByIdAndDelete(id)
+        res.send("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
