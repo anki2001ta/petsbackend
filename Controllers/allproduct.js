@@ -261,3 +261,18 @@ exports.cartCreate = async (req, res) => {
         console.log(error);
       }
     };
+
+    exports.allpets=async(req,res)=>{
+      try {
+        let petData=await petdataModel.find()
+        res.status(200).json({
+           sucess:true,
+           data: petData,
+           
+        })
+     
+      } catch (error) {
+        console.log(error)
+      }
+     
+     };
