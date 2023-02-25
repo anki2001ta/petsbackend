@@ -1,5 +1,5 @@
 const express=require("express");
-const { petsdata,pets,careCreate,foodCreate,careget,foodget,caresingledata,foodsingledata,searchpets} = require("../Controllers/allproduct");
+const { petsdata,pets,careCreate,foodCreate,careget,foodget,caresingledata,foodsingledata,searchpets,allpets} = require("../Controllers/allproduct");
 
 const petRoute=express.Router()
 petRoute.use(express.json())
