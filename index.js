@@ -124,7 +124,7 @@ app.post("/login", async (req, res) => {
     }
   });
  
-  app.get("/getPurchase", async (req, res) => {
+  app.post("/getPurchase", async (req, res) => {
     try {
       let purchaseCart=await purchaseModel.find({date:req.body.date});
       res.send(purchaseCart);
