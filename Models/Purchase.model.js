@@ -23,6 +23,9 @@ const purchaseSchema=mongoose.Schema({
      date:{
         type:String
      },
+     qty:{
+        type:Number
+     }
    
 });
 
