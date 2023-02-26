@@ -121,6 +121,15 @@ app.post("/login", async (req, res) => {
     }
   });
  
+  app.get("/getPurchase", async (req, res) => {
+    try {
+      let purchaseCart=await purchaseModel.find({userID:req.body.userID});
+      res.send(purchaseCart);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+ 
 //connect database
 app.listen(process.env.port,async()=>{
   try{
