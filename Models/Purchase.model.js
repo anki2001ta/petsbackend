@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-const cartSchema=mongoose.Schema({
+const purchaseSchema=mongoose.Schema({
     url:{
         type:String,
         required:[true,"Please Enter product url"]
@@ -25,5 +25,5 @@ const cartSchema=mongoose.Schema({
    
 });
 
-const purchaseModel=mongoose.model("purchase",cartSchema)
+const purchaseModel=mongoose.model("purchase",purchaseSchema)
 module.exports={purchaseModel}
