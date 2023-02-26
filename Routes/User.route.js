@@ -7,7 +7,7 @@ const UserModel=require("../Models/User.model")
 // To get the user
 user.get("/", async (req,res)=>{
 try{
-  const users=await UserModel.find({_id:req.body.userID});
+  const users=await UserModel.find({userID:req.body.userID});
   res.status(200).send(users)
 }
 catch(err){
@@ -26,8 +26,6 @@ user.get("/alluser", async (req,res)=>{
    res.status(400).send({msg:"user not found"});
   }
   });
-
-
 // Creating user
 user.post("/create", async (req,res)=>{
     try{

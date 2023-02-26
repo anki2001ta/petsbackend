@@ -10,6 +10,7 @@ const {auth}=require("./Middlewares/Auth.middleware")
 const cors=require("cors");
 const petRoute=require("./Routes/Pets.route");
 const cartRoute = require("./Routes/Cart.route");
+const { purchaseModel } = require("./Models/Purchase.model");
 const app=express()
 
 
@@ -102,6 +103,20 @@ app.post("/login", async (req, res) => {
   app.use(auth)
   app.use("/cart",cartRoute);
   app.use("/user",user)
+  app.post("/purchase", async (req, res) => {
+    try {
+      let temp=req.body;
+      let final=temp.map((el)=>{
+        let d=new Date();
+        el.darte=d.toUTCString();
+      })
+      await purchaseModel.insertMany(final);
+    } catch (e) {
+      console.log(e);
+      res.status(404).send({ msg: "Failed to login" });
+    }
+  });
+ 
 //connect database
 app.listen(process.env.port,async()=>{
   try{
