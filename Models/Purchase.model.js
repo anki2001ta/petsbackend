@@ -25,6 +25,9 @@ const purchaseSchema=mongoose.Schema({
      },
      qty:{
         type:Number
+     },
+     username:{
+        type:Number
      }
    
 });
