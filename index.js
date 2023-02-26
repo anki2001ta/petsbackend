@@ -134,6 +134,41 @@ app.post("/login", async (req, res) => {
       console.log(error);
     }
   });
+
+  app.get("/sevendayhistory", async (req, res) => {
+    let months=[1,2,3,4,5,6,7,8,9,10,11,12];
+    let days=[31,28,31,30,31,30,31,31,30,31,30,31];
+    let d=new Date();
+    let day=d.getDate()
+    let month=d.getMonth()
+    
+
+    try {
+      let sortDay=["Sun","Mon","Tue","Wed","Thr","Fri","Sat"]
+      let payload=[]
+      
+      for(let i=0 ;i<7 ;i++){
+        let lastdayst=await purchaseModel.find({date:`${day}-${month}-2023`}).count({})
+        let obj={
+          name:`${day}-${month}`,
+          sell:lastdayst
+        }
+        payload.push(obj)
+        day--
+
+        if(day<=1){
+          month--
+          day=days[month]
+        }
+        
+      }
+
+      res.send(payload);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  });
  
 //connect database
 app.listen(process.env.port,async()=>{
