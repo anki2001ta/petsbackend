@@ -106,12 +106,14 @@ app.post("/login", async (req, res) => {
   app.post("/purchase", async (req, res) => {
     try {
       let temp=req.body;
+      let name=req.query.name
       let final=temp.map((el)=>{
         let d=new Date();
         let day=d.getDate()
         let month=d.getMonth()
         let year=d.getFullYear()
         el.date=`${day}-${month}-${year}`;
+        el.username=name
         delete el._id
         return el
       })
