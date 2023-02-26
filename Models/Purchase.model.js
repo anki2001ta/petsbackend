@@ -27,7 +27,7 @@ const purchaseSchema=mongoose.Schema({
         type:Number
      },
      username:{
-        type:Number
+        type:String
      }
    
 });
