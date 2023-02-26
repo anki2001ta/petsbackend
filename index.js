@@ -109,6 +109,7 @@ app.post("/login", async (req, res) => {
       let final=temp.map((el)=>{
         let d=new Date();
         el.date=d.toUTCString();
+        delete el._id
         return el
       })
       
