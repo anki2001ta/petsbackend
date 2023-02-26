@@ -108,9 +108,12 @@ app.post("/login", async (req, res) => {
       let temp=req.body;
       let final=temp.map((el)=>{
         let d=new Date();
-        el.darte=d.toUTCString();
+        el.date=d.toUTCString();
+        return el
       })
+      
       await purchaseModel.insertMany(final);
+      res.status(200).send({ msg: "Purchase Sucessfull" })
     } catch (e) {
       console.log(e);
       res.status(404).send({ msg: "Failed to login" });

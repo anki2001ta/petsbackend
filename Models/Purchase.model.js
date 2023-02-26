@@ -20,7 +20,8 @@ const purchaseSchema=mongoose.Schema({
      userID:{
         type:String
      },
-     date:{type:String
+     date:{
+        type:String
      },
    
 });
