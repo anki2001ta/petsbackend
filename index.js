@@ -108,7 +108,10 @@ app.post("/login", async (req, res) => {
       let temp=req.body;
       let final=temp.map((el)=>{
         let d=new Date();
-        el.date=d.toUTCString();
+        let day=d.getDate()
+        let month=d.getMonth()
+        let year=d.getFullYear()
+        el.date=`${day}-${month}-${year}`;
         delete el._id
         return el
       })
